@@ -1,5 +1,8 @@
 package set
 
+/*
+Creates a set from a slice of strings
+*/
 func CreateSet(s []string) []string {
 	seen := make(map[string]bool)
 	result := make([]string, 0, len(s))

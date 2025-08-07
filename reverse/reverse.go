@@ -2,6 +2,9 @@ package reverse
 
 import "strings"
 
+/*
+Reverses the order of characters in a string
+*/
 func ReverseCharactersOrderRaw(s string) string {
 	runes := []rune(s)
 	result := make([]rune, len(runes))
@@ -30,6 +33,9 @@ func ReverseCharactersOrderRaw(s string) string {
 	return string(result)
 }
 
+/*
+Reverses the order of characters in a string
+*/
 func ReverseCharactersOrder(s string) string {
 
 	words := strings.Split(s, " ")

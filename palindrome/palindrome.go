@@ -9,6 +9,9 @@ import (
 
 var nonAlphanumericRegex = regexp.MustCompile(`[^[:alnum:]]+`)
 
+/*
+Checks if a string is a palindrome using a stack
+*/
 func CheckWithStack(data string) bool {
 
 	cleaned := nonAlphanumericRegex.ReplaceAllString(data, "")
@@ -31,6 +34,9 @@ func CheckWithStack(data string) bool {
 	return true
 }
 
+/*
+Checks if a string is a palindrome using a double pointer
+*/
 func CheckWithDoublePointer(data string) bool {
 	cleaned := nonAlphanumericRegex.ReplaceAllString(data, "")
 	cleaned = strings.ToLower(cleaned)
@@ -49,6 +55,9 @@ func CheckWithDoublePointer(data string) bool {
 	return true
 }
 
+/*
+Checks if a string is a palindrome using a reversed string
+*/
 func CheckWithReversedString(data string) bool {
 	cleaned := nonAlphanumericRegex.ReplaceAllString(data, "")
 	cleaned = strings.ToLower(cleaned)
