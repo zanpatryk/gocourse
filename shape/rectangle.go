@@ -1,10 +1,10 @@
 package shape
 
 type Rectangle struct {
-	width  float64
-	height float64
+	Width  float64
+	Height float64
 }
 
 func (r Rectangle) Area() float64 {
-	return r.width * r.height
+	return r.Width * r.Height
 }
