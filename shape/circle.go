@@ -3,9 +3,9 @@ package shape
 import "math"
 
 type Circle struct {
-	radius float32
+	radius float64
 }
 
-func (c Circle) Area() float32 {
+func (c Circle) Area() float64 {
 	return math.Pi * c.radius * c.radius
 }
