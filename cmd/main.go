@@ -22,7 +22,6 @@ var (
 var reqTimeout = 30 * time.Second
 
 func main() {
-
 	urlPtr := flag.String("url", "", "url to file")
 	outputPtr := flag.String("output", "", "name of file")
 
@@ -59,7 +58,6 @@ func main() {
 }
 
 func downloadFile(fileURL, fileName string) error {
-
 	parsed, err := url.ParseRequestURI(fileURL)
 
 	if err != nil || !(parsed.Scheme == "http" || parsed.Scheme == "https") {
@@ -70,13 +68,11 @@ func downloadFile(fileURL, fileName string) error {
 	defer cancel()
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fileURL, nil)
-
 	if err != nil {
 		return fmt.Errorf("%w: %v", ErrInvalidURL, err)
 	}
 
 	resp, err := http.DefaultClient.Do(req)
-
 	if err != nil {
 		if errors.Is(err, context.DeadlineExceeded) {
 			return ErrConnectionFailed
@@ -96,17 +92,18 @@ func downloadFile(fileURL, fileName string) error {
 	}
 
 	out, err := os.Create(fileName)
-
 	if err != nil {
 		return fmt.Errorf("Error creating file: %v", err)
 	}
 
 	defer func() {
-		_ = out.Close()
+		err = out.Close()
+		if err != nil {
+			fmt.Printf("Error while closing file: %v", err)
+		}
 	}()
 
 	_, err = io.Copy(out, resp.Body)
-
 	if err != nil {
 		return fmt.Errorf("%w: %v", ErrDownloadFailed, err)
 	}
